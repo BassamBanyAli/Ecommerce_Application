@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Ecommerce_Application.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<section>
+    <div class="container py-5">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+                    <div class="card shadow-sm" style="border: none; border-radius: 15px; transition: transform 0.3s;">
+                        <img src="@item.Image_URL"
+                             class="card-img-top" alt="Product" style="width: 100%; height: 200px; object-fit: cover; border-top-left-radius: 15px; border-top-right-radius: 15px;" />
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <p class="small text-primary"><a href="#!" class="text-decoration-none">@item.Category.Name</a></p>
+                                <p class="small text-danger"><s>$1099</s></p>
+                            </div>
+
+                            <div class="d-flex justify-content-between mb-3">
+                                <h5 class="mb-0">@item.Name</h5>
+                                <h5 class="text-dark mb-0">$@item.Price</h5>
+                            </div>
+
+                            <div class="d-flex justify-content-between mb-2">
+                                <p class="text-muted mb-0">Available: <span class="fw-bold">@item.Quantity</span></p>
+                                <div class="ms-auto text-warning">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                            </div>
+
+                            <!-- Add to Cart Button -->
+                            <div class="text-center mt-3">
+                                <a href="@Url.Action("AddToCart", "Products", new { id = item.ID })" class="btn btn-primary w-100 mb-2" role="button">
+                                    Add to Cart
+                                </a>
+
+                                <!-- Details Button -->
+                                <a href="@Url.Action("Details", "Products", new { id = item.ID })" class="btn btn-secondary w-100" role="button">
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<br />
+<br />
+<br />
+<br />
+<br />

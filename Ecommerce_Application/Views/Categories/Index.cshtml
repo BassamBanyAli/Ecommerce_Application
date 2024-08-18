@@ -1,0 +1,163 @@
+﻿@model List<Ecommerce_Application.Models.Category>
+<head>
+    <style>
+
+
+          .mt-100 {
+            margin-top: 100px;
+        }
+
+        .card {
+            border-radius: 7px;
+            border: 1px solid #e1e7ec;
+            overflow: hidden; /* Ensure content doesn't overflow */
+        }
+
+        .mb-30 {
+            margin-bottom: 30px;
+        }
+
+        .card-img-tiles {
+            display: flex;
+            border-bottom: 1px solid #e1e7ec;
+        }
+
+        .card-img-tiles .inner {
+            display: flex;
+            width: 100%;
+        }
+
+        .card-img-tiles .main-img {
+            flex: 2;
+            padding: 15px;
+        }
+
+        .card-img-tiles .thumblist {
+            flex: 1;
+            border-left: 1px solid #e1e7ec;
+            padding: 15px;
+        }
+
+        /* Ensure all images are the same size */
+        .card-img-tiles .main-img img,
+        .card-img-tiles .thumblist img {
+            display: block;
+            width: 100%;
+            height: auto; /* Maintain aspect ratio */
+            object-fit: cover; /* Ensure images cover the area without distortion */
+            margin-bottom: 6px;
+        }
+
+        /* Set a fixed size for images */
+        .card-img-tiles .main-img img {
+            height: 200px; /* Adjust as needed */
+        }
+
+        .card-img-tiles .thumblist img {
+            height: 100px; /* Adjust as needed */
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .page-title h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .page-title p {
+            font-size: 1.25rem;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+@{
+    // Define your variables
+    var FirstCategory = (Model.Count >= 1) ? Model[0] : null;
+    var SecondCategory = (Model.Count >= 2) ? Model[1] : null;
+    var ThirdCategory = (Model.Count >= 3) ? Model[2] : null;
+    Session["FirstCategory"] = FirstCategory.ID;
+    Session["SecondCategory"] = SecondCategory.ID;
+    Session["ThirdCategory"] = ThirdCategory.ID;
+}
+
+
+<div class="row">
+    @if (FirstCategory != null)
+    {
+
+        <div class="col-md-4 col-sm-6">
+            <div class="card mb-30">
+                <a class="card-img-tiles" href="#" data-abc="true">
+                    <div class="inner">
+                        <div class="main-img"><img src="https://i.imgur.com/O0GMYuw.jpg" alt="Category"></div>
+                        <div class="thumblist"><img src="https://i.imgur.com/ILEU18M.jpg" alt="Category"><img src="https://i.imgur.com/2kePJmX.jpg" alt="Category"></div>
+                    </div>
+                </a>
+                <div class="card-body text-center">
+                    <h4 class="card-title">@FirstCategory.Name</h4>
+                    @Html.ActionLink("View Product", "Details", "Categories", new { id = FirstCategory.ID }, new { @class = "btn btn-primary btn-sm" })
+                </div>
+            </div>
+        </div>
+    }
+    @if (SecondCategory != null)
+    {
+
+        <div class="col-md-4 col-sm-6">
+            <div class="card mb-30">
+                <a class="card-img-tiles" href="#" data-abc="true">
+                    <div class="inner">
+                        <div class="main-img"><img src="https://i.pinimg.com/564x/04/fc/2f/04fc2f775c4f9217802d7517562f4ae9.jpg" alt="Category"></div>
+                        <div class="thumblist"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb_jIiychzRK10Ae_GoDabhqMclLsxXRh6WA&s" alt="Category"><img src="https://d1fufvy4xao6k9.cloudfront.net/images/blog/posts/2023/06/hock34.jpg" alt="Category"></div>
+                    </div>
+                </a>
+                <div class="card-body text-center">
+                    <h4 class="card-title">MEN</h4>
+                    @Html.ActionLink("View Product", "Details", "Categories", new { id = SecondCategory.ID }, new { @class = "btn btn-primary btn-sm" })
+                </div>
+            </div>
+        </div>
+    }
+     @if (ThirdCategory != null)
+     {
+        <div class="col-md-4 col-sm-6">
+            <div class="card mb-30">
+                <a class="card-img-tiles" href="#" data-abc="true">
+                    <div class="inner">
+                        <div class="main-img"><img src="https://d2line.com/thatlook/wp-content/uploads/sites/4/2023/04/curvy-women-fashion-1.png" alt="Category"></div>
+                        <div class="thumblist"><img src="https://fashionmagazine.com/wp-content/uploads/2023/07/INSPO_ICONS_07_0923.jpg" alt="Category"><img src="https://www.bfashionbrands.com/media-resize/9486d180fc6186aa0e381950d4f698bc/yest.jpg" alt="Category"></div>
+                    </div>
+                </a>
+                <div class="card-body text-center">
+                    <h4 class="card-title">WOMEN</h4>
+                    @Html.ActionLink("View Product","Details", "Categories", new { id = ThirdCategory.ID }, new { @class = "btn btn-primary btn-sm" })
+
+                </div>
+            </div>
+        </div>
+     }
+    </div>
+<br />
+<br />
+<br />
+<br />

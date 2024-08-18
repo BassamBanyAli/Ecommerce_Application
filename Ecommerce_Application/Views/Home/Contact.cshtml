@@ -1,0 +1,148 @@
+﻿
+<head>
+    <style>
+        .map-sec {
+            position: relative;
+            margin-top: 20px; /* Adjust if needed to create space between other content and the map */
+        }
+
+        .map-sec-wrap {
+            position: relative;
+        }
+
+        #map-canvas {
+            height: 400px; /* Adjust height as needed */
+            width: 100%;
+            z-index: 1; /* Ensure it is on top */
+        }
+    </style>
+</head>
+<div id="content">
+    <!-- Content -->
+    <div class="page-title">
+        <div class="container">
+            <div class="page-title-inner">
+                <h3>Contact Us</h3>
+                <div class="breadcumb">
+                    <a href="index.html">Home</a><span> / </span><span>Contact Us</span>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 ct-desc">
+                    <h3>Get in Touch</h3>
+                    <div class="post-content">
+                        <h4>
+                            <span>Welcome to [Your Store Name]</span> – your trusted online destination for quality products. We’re here to assist you with any inquiries or concerns.
+                        </h4>
+                    </div>
+                    <p>We value our customers and are committed to providing excellent service. Whether you have a question about our products, need assistance with your order, or want to learn more about our store, please don't hesitate to reach out.</p>
+                    <h3 class="contact-loc">Our Contact Details</h3>
+                    <div class="row loc-det">
+                        <div class="col-md-4">
+                            <p>
+                                Phone: (941) 364-7748<br />
+                                Fax: (941) 364-2322<br />
+                                Email: support@yourdomain.com<br />
+                                Website: www.yourdomain.com<br />
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <p>
+                                Customer Service: (941) 364-7748<br />
+                                Returns: (941) 364-2322<br />
+                                Sales: sales@yourdomain.com<br />
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <p>
+                                Address: 123 E-commerce St.<br />
+                                Suite 456, Shopping City, SC 78910<br />
+                                USA
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-5 ct-form">
+                    <h3>Contact Form</h3>
+
+                    <form class="contact-form" action="contact.php" method="post">
+                        <div class="form-group">
+                            <label for="cf_name">Your Name*</label>
+                            <input type="text" class="form-control" name="cf_name" id="cf_name" placeholder="Enter your name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cf_email">Your E-mail*</label>
+                            <input type="email" class="form-control" name="cf_email" id="cf_email" placeholder="Enter your email">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cf_subject">Subject*</label>
+                            <input type="text" class="form-control" name="cf_subject" id="cf_subject" placeholder="Enter subject">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cf_message">Message*</label>
+                            <textarea class="form-control" name="cf_message" id="cf_message" placeholder="Enter your message"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div class="map-sec">
+                <div class="map-sec-wrap">
+                    <div class="add-block">
+                        <h3>Visit Us</h3>
+                        <p>
+                            Phone: (941) 364-7748<br />
+                            Fax: (941) 364-2322<br />
+                            Email: support@yourdomain.com<br />
+                            Website: www.yourdomain.com
+                        </p>
+                    </div>
+                    <div id="map-canvas"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div> <!-- Content -->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="/Content/js/library.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/Content/js/bootstrap.min.js"></script>
+<script src="/Content/js/owl.carousel.js"></script>
+<script src="/Content/js/ui.js"></script>
+<script src="/Content/js/jquery.raty.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script src="/Content/js/jquery.prettyPhoto.js"></script>
+<script src="/Content/js/jquery.selectbox-0.2.js"></script>
+<script src="/Content/js/theme-script.js"></script>
+<script>
+    function initialize() {
+        var mapCanvas = document.getElementById('map-canvas');
+        var mapOptions = {
+            center: new google.maps.LatLng(32.55258951927908, 35.8496702242471), // Coordinates for Irbid, Jordan
+            zoom: 15, // Adjust zoom level as needed
+            disableDefaultUI: true,
+            scrollwheel: false,
+            navigationControl: false,
+            mapTypeControl: false,
+            scaleControl: false,
+            draggable: false,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(mapCanvas, mapOptions);
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+

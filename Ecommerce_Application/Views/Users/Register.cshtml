@@ -1,0 +1,111 @@
+﻿@model Ecommerce_Application.Models.User
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .card {
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        border: 1px solid #ddd;
+        margin: 100px;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+        .card-body img {
+            max-width: 100%;
+            border-bottom: 1px solid #ddd;
+        }
+
+    .divider {
+        display: flex;
+        align-items: center;
+        margin: 2rem 0;
+        position: relative;
+        text-align: center;
+    }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #ddd;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        .divider p {
+            margin: 0;
+            padding: 0 1rem;
+            font-weight: 500;
+            color: #6c757d;
+        }
+
+        .divider .link-danger {
+            color: #dc3545;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+            .divider .link-danger:hover {
+                text-decoration: underline;
+            }
+</style>
+
+<section class="vh-100 d-flex align-items-center justify-content-center">
+    <div class="card">
+        <div class="card-body d-flex">
+            <div class="col-md-6 d-flex align-items-center">
+                <img src="https://media.istockphoto.com/id/1472359066/photo/survey-form-check-marks-on-checklist-filling-online-form-and-answering-questions-concept.webp?b=1&s=170667a&w=0&k=20&c=z3hSJcvKUZsH-gnTyU3Qyg8gsM6ehI0lJxk0YqKa6tw=" alt="Register image">
+            </div>
+            <div class="col-md-6">
+                @using (Html.BeginForm("Register", "Users", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <!-- Name input -->
+                    <div class="form-outline mb-4">
+                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control form-control-lg" })
+                        @Html.LabelFor(model => model.Name, "Full Name", new { @class = "form-label" })
+                    </div>
+
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control form-control-lg" })
+                        @Html.LabelFor(model => model.Email, "Email address", new { @class = "form-label" })
+                    </div>
+
+                    <!-- Password input -->
+                    <div class="form-outline mb-4">
+                        @Html.PasswordFor(model => model.Password, new { @class = "form-control form-control-lg" })
+                        @Html.LabelFor(model => model.Password, "Password", new { @class = "form-label" })
+                    </div>
+
+                    <!-- Submit button -->
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Sign Up</button>
+
+                    <div class="divider d-flex align-items-center my-4">
+
+                        <p class="fw-bold mt-2 pt-1 mb-0">
+                            Already have an account? <a href="@Url.Action("Login", "Users")" class="link-primary">Login</a>
+                        </p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
